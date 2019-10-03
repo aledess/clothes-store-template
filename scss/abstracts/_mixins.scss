@@ -1,0 +1,82 @@
+@mixin navigation {
+    &__list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    }
+    &__item {
+        list-style: none;
+        
+        &__link {
+            color: color(primary);
+            text-decoration: none;
+            font-size: size(sm);
+            transition: all .3s;
+            
+            &__hover {
+                color: lighten(color(primary), 40%);
+            }
+        }
+    }   
+}
+
+@mixin flexPosition($justContent: center, $alignItem: center) {
+    display: flex;
+    justify-content: $justContent;
+    align-items: $alignItem;
+}
+
+@mixin centerEl {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin footerList {
+    &__heading{
+        font-size: size(lg);
+        color: color(primary);
+    }
+
+    &__item{
+        list-style: none;
+        margin: 1rem 0;
+        &__link{
+            font-size: size(xs);
+            text-decoration: none;
+            color: lighten(color(primary), 15%);
+            transition: color .2s;
+            &:hover{
+            color: lighten(color(primary), 35%);
+                
+            }
+        }
+    }
+}
+
+@mixin response($breakpoint) {
+    @if($breakpoint == xl){
+        @media(max-width: 1200px){
+            @content;
+        }
+    }
+
+    @if($breakpoint == lg){
+        @media(max-width: 1000px){
+            @content;
+        }
+    }
+
+    @if($breakpoint == md){
+        @media(max-width: 800px){
+            @content;
+        }
+    }
+
+    @if($breakpoint == sm){
+        @media(max-width: 560px){
+            @content;
+        }
+    }
+}
